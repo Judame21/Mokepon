@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+
+body{
+    background-color: black;
+    font-family:  'Concert One', cursive;
+    color: aliceblue;
+}
+
+.titulo{
+    color: rgb(223, 223, 223);
+    font-size: 60px;
+    text-align: center;
+}
+
+h2{
+    font-size: 40px;
+    
+}
+#seleccionar-mascota {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+.tarjetas{
+    display: flex;
+    gap: 10px;
+}
+
+.tarjeta-de-mokepon{
+
+    text-align: center;
+    font-size: 25px; 
+    width: 200px;
+    height: 200px;
+    background-color: rgb(115, 95, 50);
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.tarjeta-de-mokepon img{
+    width: 100px;
+    height: 100px;
+}
+
+.tarjeta-de-mokepon:hover{
+    background-color:rgb(40, 42, 58);
+}
+
+#boton-mascotas{
+    font-family: 'Concert One', cursive;
+    height: 60px;
+    width: 200px;
+    margin: 15px;
+    background: transparent;
+    color: aliceblue;
+    font-size: large;
+    border: 3px solid white;
+    border-radius: 20px;
+    margin: 30px 20px 30px 20px;
+    
+}
+#boton-mascotas:hover{
+    background-color: rgb(40, 42, 58);
+}
+
+input{
+    display: none;
+}
+
+#seleccionar-ataque{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.boton-ataque{
+    font-family: 'Concert One', cursive;
+    height: 60px;
+    width: 200px;
+    margin: 15px;
+    background: transparent;
+    color: aliceblue;
+    font-size: large;
+    border: 3px solid white;
+    border-radius: 20px;
+    margin: 30px 20px 30px 20px;
+}
+.boton-ataque:hover{
+    background-color: rgb(40, 42, 58);
+}
+
+#mensajes{
+    height: 100px;
+    width: 300px;
+    background-color:rgb(115, 95, 50); 
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#ataquesDelJugador{
+    text-align: center;
+}
+#ataquesDelEnemigo{
+    text-align: center;
+}
+#boton-reiniciar{
+    border: none;
+    background: transparent;
+    color: rgb(40, 42, 58);
+}
