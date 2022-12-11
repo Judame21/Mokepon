@@ -62,9 +62,9 @@ function crearMensaje()
     
     sectionMensajes.innerHTML = estado
     let mensajeJugador = document.createElement("p")
-        mensajeJugador.innerHTML = "Tu mascota ataco con "+ ataqueJugador
+        mensajeJugador.innerHTML =  ataqueJugador
     let mensajeEnemigo = document.createElement("p")    
-        mensajeEnemigo.innerHTML = "La mascota enemiga ataco con " + tipoAtaqueEnemigo
+        mensajeEnemigo.innerHTML =  tipoAtaqueEnemigo
 
 
     ataquesDelJugador.appendChild(mensajeJugador)
@@ -110,12 +110,6 @@ function crearMensajeFinal(Mensaje)
     let sectionMensajes = document.getElementById("resultados")
 
     sectionMensajes.innerHTML = Mensaje
-
-    
-    
-
-
-
 
     let botonFuego = document.getElementById("boton-fuego")
         botonFuego.disabled = true
