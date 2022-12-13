@@ -14,8 +14,10 @@ const inputRatigueya = document.getElementById("Ratigueya")
 const mascotaJugador = document.getElementById("mascota-jugador")
 const sectionSeleccionarMascota = document.getElementById("seleccionar-mascota")    
 const mascotaEnemigo = document.getElementById("mascota-enemigo")
+const contenedorTarjetas = document.getElementById("contenedor-tarjetas")
 
-
+let mokepones = []
+let opcionDeMokepones
 let ataqueJugador
 let tipoAtaqueEnemigo
 let estado
@@ -32,17 +34,40 @@ class Mokepon{
     }
 }
 
-let hipodoge =   new Mokepon("hipodoge", ".assets/hipodoge_attack.png", 5)
-let capipepo =   new Mokepon("capipepo", ".assets/capipepo_attack.png", 5)
-let ratigueya =   new Mokepon("ratigueya", ".assets/ratigueya_attack.png", 5)
-
-
-console.log(hipodoge)
-console.log(capipepo)
-console.log(ratigueya)
+let hipodoge =   new Mokepon("Hipodoge", "assets/hipodoge_attack.png", 5)
+let capipepo =   new Mokepon("Capipepo", "assets/capipepo_attack.png", 5)
+let ratigueya =   new Mokepon("Ratigueya", "assets/ratigueya_attack.png", 5)
 
 
 
+
+
+hipodoge.ataques.push(
+    {nombre: "💧", id : "boton-agua"},
+    {nombre: "💧", id : "boton-agua"},
+    {nombre: "💧", id : "boton-agua"},
+    {nombre: "🌱", id : "boton-tierra"},
+    {nombre: "🔥", id : "boton-fuego"}
+)
+
+capipepo.ataques.push(
+    {nombre: "🌱", id : "boton-tierra"},
+    {nombre: "🌱", id : "boton-tierra"},
+    {nombre: "🌱", id : "boton-tierra"},
+    {nombre: "💧", id : "boton-agua"},
+    {nombre: "🔥", id : "boton-fuego"}
+)
+
+ratigueya.ataques.push(
+    {nombre: "🔥", id : "boton-fuego"},
+    {nombre: "🔥", id : "boton-fuego"},
+    {nombre: "🔥", id : "boton-fuego"},
+    {nombre: "🌱", id : "boton-tierra"},
+    {nombre: "💧", id : "boton-agua"}
+)
+
+
+mokepones.push(hipodoge,capipepo,ratigueya)
 
 
 function iniciarJuego()
@@ -55,6 +80,18 @@ function iniciarJuego()
     botonTierra.addEventListener("click", ataqueTierra)  
     botonReiniciar.addEventListener("click", reiniciarJuego)
         
+    mokepones.forEach((mokepon) => {
+        opcionDeMokepones = `
+        <input type="radio" name="mascota" id=${mokepon.nombre}/>
+        <label class="tarjeta-de-mokepon" for="${mokepon.nombre}"> 
+            <p>${mokepon.nombre}</p>    
+            <img src=${mokepon.imagen} alt="${mokepon.nombre}">
+        </label>
+        `
+        contenedorTarjetas.innerHTML += opcionDeMokepones
+    })
+
+
 }
 
 function ataqueEnemigo()
