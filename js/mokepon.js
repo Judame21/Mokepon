@@ -22,6 +22,29 @@ let estado
 let vidasJugador = 3
 let vidasEnemigo = 3
 
+class Mokepon{
+    constructor(nombre, imagen, vidas)
+    {
+        this.nombre = nombre
+        this.imagen = imagen 
+        this.vidas = vidas 
+        this.ataques = []
+    }
+}
+
+let hipodoge =   new Mokepon("hipodoge", ".assets/hipodoge_attack.png", 5)
+let capipepo =   new Mokepon("capipepo", ".assets/capipepo_attack.png", 5)
+let ratigueya =   new Mokepon("ratigueya", ".assets/ratigueya_attack.png", 5)
+
+
+console.log(hipodoge)
+console.log(capipepo)
+console.log(ratigueya)
+
+
+
+
+
 function iniciarJuego()
 {
     sectionSeleccionarAtaque.style.display = "none"
@@ -57,23 +80,14 @@ function ataqueEnemigo()
 
 function crearMensaje()
 {
-    
-
-    
-    
     sectionMensajes.innerHTML = estado
     let mensajeJugador = document.createElement("p")
         mensajeJugador.innerHTML =  ataqueJugador
     let mensajeEnemigo = document.createElement("p")    
         mensajeEnemigo.innerHTML =  tipoAtaqueEnemigo
-
-
     ataquesDelJugador.appendChild(mensajeJugador)
     ataquesDelEnemigo.appendChild(mensajeEnemigo)
     revisarVidas()
-
-    
-
 }
 
 function condicionDeGanar()
