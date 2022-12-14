@@ -197,21 +197,21 @@ function seleccionarMascotaJugador()
 {
     if(inputHipodoge.checked)
     {
-        mascotaJugador.innerHTML = "Hipodoge"
+        mascotaJugador.innerHTML = inputHipodoge.id
         seleccionarMascotaEnemiga()
         sectionSeleccionarAtaque.style.display = "flex"
         sectionSeleccionarMascota.style.display = 'none'
     }
     else if(inputCapipepo.checked)
     {
-        mascotaJugador.innerHTML = "Capipepo"
+        mascotaJugador.innerHTML = inputCapipepo.id
         seleccionarMascotaEnemiga()
         sectionSeleccionarAtaque.style.display = "flex"
         sectionSeleccionarMascota.style.display = 'none'
     }
     else if(inputRatigueya.checked)
     {
-        mascotaJugador.innerHTML = "Ratigueya"
+        mascotaJugador.innerHTML = inputRatigueya.id
         seleccionarMascotaEnemiga()
         sectionSeleccionarAtaque.style.display = "flex"
         sectionSeleccionarMascota.style.display = 'none'
