@@ -1,9 +1,7 @@
 const sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque")
 const sectionReiniciar = document.getElementById("reiniciar")
 const botonMascotaJugador = document.getElementById("boton-mascotas")
-const botonFuego = document.getElementById("boton-fuego")
-const botonAgua = document.getElementById("boton-agua")
-const botonTierra = document.getElementById("boton-tierra")
+
 const botonReiniciar = document.getElementById("boton-reiniciar")
 const sectionMensajes = document.getElementById("resultados")
 const ataquesDelJugador = document.getElementById("ataquesDelJugador")
@@ -12,9 +10,13 @@ const mascotaJugador = document.getElementById("mascota-jugador")
 const sectionSeleccionarMascota = document.getElementById("seleccionar-mascota")    
 const mascotaEnemigo = document.getElementById("mascota-enemigo")
 const contenedorTarjetas = document.getElementById("contenedor-tarjetas")
+const contenedorAtaques = document.getElementById("contenedor-ataques")
+
+
 
 let mokepones = []
 let opcionDeMokepones
+let opcionDeAtaques
 let ataqueJugador
 let tipoAtaqueEnemigo
 let estado
@@ -23,6 +25,11 @@ let vidasEnemigo = 3
 let inputCapipepo 
 let inputHipodoge 
 let inputRatigueya 
+let botonFuego 
+let botonAgua 
+let botonTierra
+
+
 
 class Mokepon{
     constructor(nombre, imagen, vidas)
@@ -37,9 +44,6 @@ class Mokepon{
 let hipodoge =   new Mokepon("Hipodoge", "assets/hipodoge_attack.png", 5)
 let capipepo =   new Mokepon("Capipepo", "assets/capipepo_attack.png", 5)
 let ratigueya =   new Mokepon("Ratigueya", "assets/ratigueya_attack.png", 5)
-
-
-
 
 
 hipodoge.ataques.push(
@@ -75,9 +79,7 @@ function iniciarJuego()
     sectionSeleccionarAtaque.style.display = "none"
     sectionReiniciar.style.display = "none"
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
-    botonFuego.addEventListener("click", ataqueFuego)
-    botonAgua.addEventListener("click", ataqueAgua)
-    botonTierra.addEventListener("click", ataqueTierra)  
+     
     botonReiniciar.addEventListener("click", reiniciarJuego)
         
     mokepones.forEach((mokepon) => {
@@ -193,19 +195,27 @@ function ataqueTierra()
     ataqueEnemigo()
 }
 
+let mascotaSeleccionada;
+
 function seleccionarMascotaJugador()
 {
     if(inputHipodoge.checked)
     {
         mascotaJugador.innerHTML = inputHipodoge.id
         seleccionarMascotaEnemiga()
+        mascotaSeleccionada = hipodoge.nombre;
+        extraerAtaques(mascotaSeleccionada)
         sectionSeleccionarAtaque.style.display = "flex"
         sectionSeleccionarMascota.style.display = 'none'
+      
     }
+
     else if(inputCapipepo.checked)
     {
         mascotaJugador.innerHTML = inputCapipepo.id
         seleccionarMascotaEnemiga()
+        mascotaSeleccionada = capipepo.nombre;
+        extraerAtaques(mascotaSeleccionada)
         sectionSeleccionarAtaque.style.display = "flex"
         sectionSeleccionarMascota.style.display = 'none'
     }
@@ -213,13 +223,41 @@ function seleccionarMascotaJugador()
     {
         mascotaJugador.innerHTML = inputRatigueya.id
         seleccionarMascotaEnemiga()
+        mascotaSeleccionada = ratigueya.nombre;
+        extraerAtaques(mascotaSeleccionada)   
         sectionSeleccionarAtaque.style.display = "flex"
         sectionSeleccionarMascota.style.display = 'none'
     }
+
     else{
         alert("Tienes que seleccionar una mascota para continuar")
-    }       
+    }
+    
 }
+
+function extraerAtaques(mascotaSeleccionada)
+{
+
+    mokepones.forEach((mokepon)=>{
+        
+        if(mokepon.nombre == mascotaSeleccionada)
+        {
+            mokepon.ataques.forEach((ataque)=> {
+                opcionDeAtaques = `<button id=${ataque.id} class="boton-ataque">${ataque.nombre}</button>`
+                contenedorAtaques.innerHTML += opcionDeAtaques 
+            }) 
+        }
+    })
+
+    botonFuego = document.getElementById("boton-fuego")
+    botonAgua = document.getElementById("boton-agua")
+    botonTierra = document.getElementById("boton-tierra")
+        botonFuego.addEventListener("click", ataqueFuego)
+        botonAgua.addEventListener("click", ataqueAgua)
+        botonTierra.addEventListener("click", ataqueTierra) 
+}
+
+
 
 function reiniciarJuego()
 {

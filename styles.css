@@ -131,6 +131,11 @@ input{
     text-align: center;
 }
 
+#contenedor-ataques{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
 
  
