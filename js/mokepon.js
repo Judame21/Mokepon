@@ -19,8 +19,8 @@ let opcionDeMokepones
 let opcionDeAtaques
 let tipoAtaqueEnemigo = []
 let estado
-let vidasJugador = 5
-let vidasEnemigo = 5
+let victoriasJugador = 0
+let victoriasEnemigo = 0
 let inputCapipepo 
 let inputHipodoge 
 let inputRatigueya 
@@ -109,7 +109,6 @@ function ataqueEnemigo()
     {
         numero = aleatorio(0, ataquesMokeponEnemigo.length - 1)
         var existe = false 
-
         for(var i = 0; i < numeros.length; i++)
         {            
             if(numeros[i] == numero)
@@ -118,21 +117,20 @@ function ataqueEnemigo()
                 break;
             }
         }       
-
         if(existe == false)
         {
             numeros.push(numero)
             j++
         }        
     }
-
-    for(var i = 0; i<ataquesMokeponEnemigo.length; i++){
+    for(var i = 0; i<numeros.length; i++){
     
         tipoAtaqueEnemigo.push(mokepones[mascotaAleatoria].ataques[numeros[i]].nombre2)
-        console.log(tipoAtaqueEnemigo)
+    
     }
     console.log(numeros)
     console.log(tipoAtaqueEnemigo)
+
     condicionDeGanar()
     crearMensaje()
 }
@@ -164,13 +162,13 @@ function condicionDeGanar()
         else if(ataqueJugador[i] == "FUEGO" && tipoAtaqueEnemigo[i] == "TIERRA" || ataqueJugador[i] == "AGUA" && tipoAtaqueEnemigo[i] == "FUEGO" || ataqueJugador[i] == "TIERRA" && tipoAtaqueEnemigo[i] == "AGUA")
         {
             
-            vidasEnemigo--
-            elementoVidasEnemigo.innerHTML = vidasEnemigo 
+            victoriasEnemigo++
+            elementoVidasEnemigo.innerHTML = victoriasEnemigo 
         }
         else{
          
-            vidasJugador--
-            elementoVidasJugador.innerHTML = vidasJugador 
+            victoriasJugador++
+            elementoVidasJugador.innerHTML = victoriasJugador 
         }
     }
     revisarVidas();
@@ -181,17 +179,15 @@ function crearMensajeFinal(Mensaje)
 {
     sectionReiniciar.style.display = "flex"
     sectionMensajes.innerHTML = Mensaje
- 
-    
 }
 
 function revisarVidas()
 {
-    if(vidasJugador < vidasEnemigo)
+    if(victoriasJugador < victoriasEnemigo)
     {
        crearMensajeFinal("TU ENEMIGO TE HA DERROTADO")
     }
-    else if(vidasEnemigo < vidasJugador)
+    else if(victoriasEnemigo < victoriasJugador)
     {
         crearMensajeFinal("HAS DERROTADO A TU ENEMIGO")
     }
@@ -275,7 +271,6 @@ function secuenciaAtaque()
                         ataqueEnemigo()
                     }
                 }
-                console.log(ataqueJugador)
 
             })
             
