@@ -137,8 +137,26 @@ input{
     justify-content: center;
 }
 
+#ver-mapa{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+#mapa{
+    border: 3px solid white;
+}
  
+
+#direcciones-horizontales{
+    display: flex;
+    flex-direction: row;
+}
+#direcciones-verticales{
+    display: flex;
+    flex-direction: column;
+}
+
 
 @media(max-width: 360px){
     .tarjetas{

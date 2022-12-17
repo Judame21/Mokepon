@@ -12,13 +12,26 @@
         <h2>Elige a tu mascota</h2>
 
             <div class ="tarjetas" id = "contenedor-tarjetas">
-                
-              
-                
+                    
             </div>
             <button id="boton-mascotas">Seleccionar</button>
 
     </section>  
+
+    <section id="ver-mapa">
+        <h2>Recorre el mapa con tu mokepon </h2>
+        <canvas id="mapa"> </canvas>
+        <div id="direcciones-horizontales">
+            <button onMouseUp="detenerPersonaje()" onMouseDown="moverPersonajeIzquierda()">←</button> 
+                <div id="direcciones-verticales">
+                    <button onMouseUp="detenerPersonaje()" onMouseDown="moverPersonajeArriba()">↑</button>
+                    <button onMouseUp="detenerPersonaje()" onMouseDown="moverPersonajeAbajo()">↓</button>
+                </div>
+            <button onMouseUp="detenerPersonaje()" onMouseDown="moverPersonajeDerecha()">→</button>
+        </div>        
+    </section>
+
+
             
     <section id="seleccionar-ataque">
         
