@@ -34,7 +34,8 @@ let ataquesMokeponEnemigo  = []
 let mascotaAleatoria 
 let lienzo = mapa.getContext("2d")
 let intervalo 
-
+let mascotaSeleccionada;
+let mascotaSel;
 
 
 class Mokepon{
@@ -76,7 +77,6 @@ hipodoge.ataques.push(
     {nombre: "🌱", id : "boton-tierra", nombre2: "TIERRA"},
     {nombre: "🔥", id : "boton-fuego", nombre2: "FUEGO"}
 )
-
 capipepo.ataques.push(
     {nombre: "🌱", id : "boton-tierra", nombre2: "TIERRA"},
     {nombre: "🌱", id : "boton-tierra", nombre2: "TIERRA"},
@@ -84,7 +84,6 @@ capipepo.ataques.push(
     {nombre: "💧", id : "boton-agua", nombre2: "AGUA"},
     {nombre: "🔥", id : "boton-fuego", nombre2: "FUEGO"}
 )
-
 ratigueya.ataques.push(
     {nombre: "🔥", id : "boton-fuego", nombre2: "FUEGO"},
     {nombre: "🔥", id : "boton-fuego", nombre2: "FUEGO"},
@@ -92,10 +91,7 @@ ratigueya.ataques.push(
     {nombre: "🌱", id : "boton-tierra", nombre2: "TIERRA"},
     {nombre: "💧", id : "boton-agua", nombre2: "AGUA"}
 )
-
-
 mokepones.push(hipodoge,capipepo,ratigueya)
-
 
 function iniciarJuego()
 {
@@ -122,7 +118,6 @@ function iniciarJuego()
 
 
 }
-
 function ataqueEnemigo()
 {
     let numero
@@ -157,7 +152,6 @@ function ataqueEnemigo()
     condicionDeGanar()
     crearMensaje()
 }
-
 function crearMensaje()
 {
     for(var i = 0; i < tipoAtaqueEnemigo.length; i++){
@@ -170,7 +164,6 @@ function crearMensaje()
         ataquesDelEnemigo.appendChild(mensajeEnemigo)
     }    
 }
-
 function condicionDeGanar()
 {
     elementoVidasJugador = document.getElementById("vidas-jugador")
@@ -197,13 +190,11 @@ function condicionDeGanar()
     revisarVidas();
     
 }
-
 function crearMensajeFinal(Mensaje)
 {
     sectionReiniciar.style.display = "flex"
     sectionMensajes.innerHTML = Mensaje
 }
-
 function revisarVidas()
 {
     if(victoriasJugador < victoriasEnemigo)
@@ -218,10 +209,6 @@ function revisarVidas()
         crearMensajeFinal("HAN EMPATADO")
     }
 }
-
-
-let mascotaSeleccionada;
-let mascotaSel;
 function seleccionarMascotaJugador()
 {
    
@@ -268,7 +255,6 @@ function seleccionarMascotaJugador()
     }
     
 }
-
 function iniciarMapa(){
     mapa.width=400
     mapa.height=300
@@ -279,8 +265,6 @@ function iniciarMapa(){
     window.addEventListener('keyup',detenerPersonaje)
 
 }
-
-
 function pintarCanva()
 {
     lienzo.clearRect(0,0,mapa.width, mapa.height)
@@ -301,7 +285,6 @@ function pintarCanva()
 
     
 }
-
 function sePresionoUnaTecla(event)
 {
     switch (event.key) {
