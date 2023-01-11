@@ -38,27 +38,36 @@ let intervalo
 
 
 class Mokepon{
-    constructor(nombre, imagen, vidas)
+    constructor(nombre, imagen, vidas,fotoMapa, x = 10, y = 10)
     {
         this.nombre = nombre
         this.imagen = imagen 
         this.vidas = vidas 
         this.ataques = []
-        this.x = 20
-        this.y = 30
-        this.ancho = 80
-        this.alto = 80
+        this.x = x
+        this.y = y
+        this.ancho = 50
+        this.alto = 50
         this.mapaFoto = new Image()
-        this.mapaFoto.src = imagen
+        this.mapaFoto.src = fotoMapa
         this.velocidadX = 0
         this.velocidadY = 0
+        
+        this.fotoMapa = fotoMapa    
+    }
+
+    pintarMokepon() {
+        lienzo.drawImage(this.mapaFoto, this.x, this.y, this.ancho, this.alto)    
     }
 }
 
-let hipodoge =   new Mokepon("Hipodoge", "assets/hipodoge_attack.png", 5)
-let capipepo =   new Mokepon("Capipepo", "assets/capipepo_attack.png", 5)
-let ratigueya =   new Mokepon("Ratigueya", "assets/ratigueya_attack.png", 5)
+let hipodoge =   new Mokepon("Hipodoge", "assets/hipodoge_attack.png", 5, "assets/hipodoge.png")
+let capipepo =   new Mokepon("Capipepo", "assets/capipepo_attack.png", 5, "assets/capipepo.png")
+let ratigueya =   new Mokepon("Ratigueya", "assets/ratigueya_attack.png", 5, "assets/ratigueya.png")
 
+let hipodogeEnemigo =   new Mokepon("Hipodoge", "assets/hipodoge_attack.png", 5, "assets/hipodoge.png", 80, 120)
+let capipepoEnemigo =   new Mokepon("Capipepo", "assets/capipepo_attack.png", 5, "assets/capipepo.png", 120, 50)
+let ratigueyaEnemigo =   new Mokepon("Ratigueya", "assets/ratigueya_attack.png", 5, "assets/ratigueya.png", 200, 200)
 
 hipodoge.ataques.push(
     {nombre: "💧", id : "boton-agua", nombre2: "AGUA"},
@@ -283,7 +292,10 @@ function pintarCanva()
         mapa.height
     )
     
-    lienzo.drawImage(mascotaSel.mapaFoto, mascotaSel.x, mascotaSel.y, mascotaSel.ancho, mascotaSel.alto)
+    mascotaSel.pintarMokepon()
+    hipodogeEnemigo.pintarMokepon()
+    capipepoEnemigo.pintarMokepon()
+    ratigueyaEnemigo.pintarMokepon()
     mascotaSel.x = mascotaSel.x + mascotaSel.velocidadX;
     mascotaSel.y = mascotaSel.y + mascotaSel.velocidadY;
 
