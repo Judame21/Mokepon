@@ -14,7 +14,7 @@ body{
 
 h2{
     font-size: 40px;
-    
+    text-align: center;
 }
 #seleccionar-mascota {
     display: flex;
@@ -51,11 +51,8 @@ h2{
 }
 
 input:checked + label{
-
     background-color: rgb(40, 42, 58);
-
 }
-
 
 #boton-mascotas{
     font-family: 'Concert One', cursive;
@@ -73,6 +70,8 @@ input:checked + label{
 #boton-mascotas:hover{
     background-color: rgb(40, 42, 58);
 }
+
+
 
 input{
     display: none;
@@ -98,6 +97,25 @@ input{
 .boton-ataque:hover{
     background-color: rgb(40, 42, 58);
 }
+
+#ver-mapa button{
+    font-family: 'Concert One', cursive;
+    height: 60px;
+    width: 60px;
+    background: transparent;
+    color: aliceblue;
+    font-size: large;
+    border: 3px solid white;
+    border-radius: 20px;
+  margin: 10px;
+}
+
+#ver-mapa button:hover{
+    background-color: rgb(40, 42, 58);
+    
+}
+
+
 
 #mensajes{
     height: 100px;
@@ -151,6 +169,7 @@ input{
 #direcciones-horizontales{
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 #direcciones-verticales{
     display: flex;
