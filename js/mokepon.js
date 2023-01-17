@@ -21,7 +21,7 @@ let mapaBackground = new Image()
 mapaBackground.src = "./assets/mokemap.png"
 
 
-
+let jugadorId = null
 let mokepones = []
 let opcionDeMokepones
 let opcionDeAtaques
@@ -165,8 +165,27 @@ function iniciarJuego()
         inputRatigueya = document.getElementById("Ratigueya")
     })
 
-
+    unirseAlJuego()
 }
+
+function unirseAlJuego()
+{
+    fetch("http://localhost:8080/unirse")
+    .then(function(res){
+        if(res.ok)
+        {
+            res.text()
+            .then(function(respuesta){
+                console.log(respuesta)
+                jugadorId = respuesta
+            })
+        }
+    })
+    
+    
+}
+
+
 function ataqueEnemigo()
 {
     let numero
@@ -298,8 +317,25 @@ function seleccionarMascotaJugador()
     else{
         alert("Tienes que seleccionar una mascota para continuar")
     }
+
+    seleccionarMokepon(mascotaSeleccionada)
     
 }
+
+function seleccionarMokepon(mascotaJugador)
+{
+    fetch(`http://localhost:8080/mokepon/"${jugadorId}`, {
+        method:"post",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({
+            mokepon: mascotaJugador
+        })
+    })
+}
+
+
 function iniciarMapa(){
   
 
