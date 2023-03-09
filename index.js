@@ -1,11 +1,8 @@
 const express = require("express")
 const cors = require("cors")
 const app = express()
-
-
 app.use(cors())
 app.use(express.json())
-
 const jugadores = []
 
 class Jugador {
@@ -26,9 +23,6 @@ class Mokepon {
     }
 }
 
-
-
-
 app.get("/unirse", (req, res) => {
     const id = `${Math.random()}`
     const jugador = new Jugador(id)
@@ -37,25 +31,18 @@ app.get("/unirse", (req, res) => {
     res.send(id)
 })
 
-
 app.post("/mokepon/:jugadorId", (req,res) =>{
     const jugadorId = req.params.jugadorId || ""
     const nombre = req.body.mokepon || ""
     const mokepon = new Mokepon(nombre)
     const jugadorIndex = jugadores.findIndex((jugador) => jugadorId === jugador.id)
-    console.log(jugadorIndex)
     if(jugadorIndex >= 0)
     {
         jugadores[jugadorIndex].asignarMokepon(mokepon)
     }
-
     console.log(jugadores)
-    console.log(jugadorId)
-
     res.end()
 })
-
-
 
 
 app.listen(8080, () => {
